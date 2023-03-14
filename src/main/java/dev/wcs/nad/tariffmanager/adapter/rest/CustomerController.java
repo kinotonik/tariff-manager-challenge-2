@@ -17,13 +17,9 @@ import java.util.List;
 @RestController
 public class CustomerController {
 
-
+    @Autowired private CustomerMapper customerMapper;
     private final CustomerService customerService;
-
     private final EntityToDtoMapper entityToDtoMapper;
-    @Autowired
-    private CustomerMapper customerMapper;
-
 
     public CustomerController(CustomerService customerService, EntityToDtoMapper entityToDtoMapper, CustomerMapper customerMapper) {
         this.customerService = customerService;
@@ -50,6 +46,5 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> assignAddress(@PathVariable("id") Long customerId, @RequestBody AddressDto addressDto) {
         Customer customerEntity = customerService.assignAddress(customerId, entityToDtoMapper.mapAddressDto(addressDto));
         return ResponseEntity.ok(customerMapper.convertEntityToDto(customerEntity));
-        /*return ResponseEntity.ok(entityToDtoMapper.customerToCustomerDto(customerEntity));*/
     }
 }

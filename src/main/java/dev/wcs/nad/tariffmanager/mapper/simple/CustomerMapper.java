@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerMapper {
 
-    public CustomerDto convertEntityToDto(Customer customerEntity) {
+    public static CustomerDto convertEntityToDto(Customer customerEntity) {
         // We use Lombok Builder (Pattern) here
         CustomerDto.CustomerDtoBuilder customerDtoBuilder = CustomerDto.builder();
         customerDtoBuilder.firstname(customerEntity.getFirstname());
