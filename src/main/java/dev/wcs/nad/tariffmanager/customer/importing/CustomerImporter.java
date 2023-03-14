@@ -22,9 +22,10 @@ public class CustomerImporter {
 
     private final int juniorCustomerDiscountPercentage;
     // Challenge: Add other discount percentage here and as constructor-injected parameter
-
-    public CustomerImporter(@Value("${junior.customer.discount.percent}") int juniorCustomerDiscountPercentage) {
+private final int warfCustomerDiscountPercentage;
+    public CustomerImporter(@Value("${junior.customer.discount.percent}") int juniorCustomerDiscountPercentage, @Value("${warf.customer.discount.percent}") int warfCustomerDiscountPercentage) {
         this.juniorCustomerDiscountPercentage = juniorCustomerDiscountPercentage;
+        this.warfCustomerDiscountPercentage = warfCustomerDiscountPercentage;
     }
 
     public List<Customer> importCustomers(File customerCsv) {
@@ -55,7 +56,7 @@ public class CustomerImporter {
             switch (type.toUpperCase()) {
                 case "E": {
                     // Challenge: If you added a discount for this customer type, add the discount to the constructor here
-                    SpecialCustomer specialCustomer = new SpecialCustomer(id, name, email, birthDate, lastBuyDate);
+                    SpecialCustomer specialCustomer = new SpecialCustomer(warfCustomerDiscountPercentage, id, name, email, birthDate, lastBuyDate);
                     return specialCustomer;
                 }
                 case "V": {
