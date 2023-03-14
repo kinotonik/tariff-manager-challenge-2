@@ -3,7 +3,7 @@ package dev.wcs.nad.tariffmanager.mapper.simple;
 import dev.wcs.nad.tariffmanager.adapter.rest.dto.customer.CustomerDto;
 import dev.wcs.nad.tariffmanager.persistence.entity.Customer;
 import org.springframework.stereotype.Component;
-
+@Component
 public class CustomerMapper {
 
     public CustomerDto convertEntityToDto(Customer customerEntity) {
